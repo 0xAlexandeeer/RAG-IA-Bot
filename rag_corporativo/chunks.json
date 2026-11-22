@@ -1,0 +1,42 @@
+[
+    {
+        "documento_id": "POL-PRES-001",
+        "version": "1.0",
+        "estado": "vigente",
+        "vigente_desde": "2026-01-01",
+        "archivo": "politica_presupuestos.txt",
+        "chunk_id": 1,
+        "seccion": "1. OBJETIVO",
+        "contenido": "1. OBJETIVO\nEstablecer procedimientos para solicitar\nampliaciones presupuestales."
+    },
+    {
+        "documento_id": "POL-PRES-001",
+        "version": "1.0",
+        "estado": "vigente",
+        "vigente_desde": "2026-01-01",
+        "archivo": "politica_presupuestos.txt",
+        "chunk_id": 2,
+        "seccion": "2. SOLICITUDES",
+        "contenido": "2. SOLICITUDES\nLos colaboradores deben registrar sus\nsolicitudes mediante el sistema interno."
+    },
+    {
+        "documento_id": "POL-PRES-001",
+        "version": "1.0",
+        "estado": "vigente",
+        "vigente_desde": "2026-01-01",
+        "archivo": "politica_presupuestos.txt",
+        "chunk_id": 3,
+        "seccion": "3. APROBACIONES",
+        "contenido": "3. APROBACIONES\nLas solicitudes superiores a S/ 1,000\nrequieren aprobación del jefe de área\ny del responsable de Finanzas."
+    },
+    {
+        "documento_id": "POL-PRES-001",
+        "version": "1.0",
+        "estado": "vigente",
+        "vigente_desde": "2026-01-01",
+        "archivo": "politica_presupuestos.txt",
+        "chunk_id": 4,
+        "seccion": "4. SEGUIMIENTO",
+        "contenido": "4. SEGUIMIENTO\nFinanzas registra las solicitudes aprobadas\ny verifica su ejecución."
+    }
+]
