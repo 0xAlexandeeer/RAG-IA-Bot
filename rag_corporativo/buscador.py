@@ -10,7 +10,6 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-# 1. Configuración general
 carpeta = Path(__file__).resolve().parent
 load_dotenv(carpeta.parent / ".env")
 
@@ -21,7 +20,6 @@ cliente = genai.Client(
     api_key=os.environ["GEMINI_API_KEY"]
 )
 
-# 2. Calcular similitud coseno
 def similitud_coseno(a, b):
 
     if len(a) != len(b):
@@ -38,7 +36,6 @@ def similitud_coseno(a, b):
     return producto / (norma_a * norma_b)
 
 
-# 3. Recuperar chunks y embeddings
 def cargar_documentos():
 
     with sqlite3.connect(carpeta / "rag.db") as conexion:
@@ -66,7 +63,6 @@ def cargar_documentos():
 
     for doc_id, version, chunk_id, seccion, contenido, vector, huella in registros:
 
-        # Comprobar que el embedding no esté desactualizado
         texto = f"{seccion}\n{contenido}"
 
         huella_actual = hashlib.sha256(
@@ -89,7 +85,6 @@ def cargar_documentos():
     return documentos
 
 
-# 4. Generar el embedding de la pregunta
 def vectorizar_pregunta(pregunta):
 
     respuesta = cliente.models.embed_content(
@@ -104,7 +99,6 @@ def vectorizar_pregunta(pregunta):
     return respuesta.embeddings[0].values
 
 
-# 5. Buscar documentos relacionados
 def buscar(pregunta, documentos):
 
     vector_pregunta = vectorizar_pregunta(pregunta)
@@ -129,7 +123,6 @@ def buscar(pregunta, documentos):
 
 
 
-# 6. Ejecutar nuestro buscador
 def main():
 
     documentos = cargar_documentos()

@@ -1,7 +1,4 @@
 
-# Clase 8: Evaluación de Retrieval
-
-# 1. Dataset de evaluación
 casos = [
     {
         "pregunta": "¿Quién aprueba una ampliación?",
@@ -26,7 +23,6 @@ casos = [
 ]
 
 
-# 2. Evaluar distintos valores de K
 def evaluar(casos, k):
 
     aciertos = 0
@@ -53,7 +49,6 @@ def evaluar(casos, k):
     return recall, mrr
 
 
-# 3. Ejecutar evaluación
 for k in [3, 4]:
 
     recall, mrr = evaluar(casos, k)

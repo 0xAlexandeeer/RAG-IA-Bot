@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-# 1. Configurar rutas y modelo
 carpeta = Path(__file__).resolve().parent
 
 load_dotenv(carpeta.parent / ".env")
@@ -17,11 +16,9 @@ load_dotenv(carpeta.parent / ".env")
 MODELO = "gemini-embedding-001"
 DIMENSIONES = 768
 
-# 2. Conectar con nuestra base de datos
 conexion = sqlite3.connect(carpeta / "rag.db")
 conexion.execute("PRAGMA foreign_keys = ON")
 
-# 3. Crear la tabla de embeddings
 conexion.execute("""
     CREATE TABLE IF NOT EXISTS embeddings (
         documento_id TEXT NOT NULL,
@@ -42,7 +39,6 @@ conexion.execute("""
     )
 """)
 
-# 4. Recuperar los chunks vigentes
 chunks = conexion.execute("""
     SELECT documento_id, version, chunk_id,
            seccion, contenido
@@ -51,7 +47,6 @@ chunks = conexion.execute("""
     ORDER BY documento_id, version, chunk_id
 """).fetchall()
 
-# 5. Identificar los chunks nuevos o modificados
 pendientes = []
 
 for doc_id, version, chunk_id, seccion, contenido in chunks:
@@ -78,7 +73,6 @@ for doc_id, version, chunk_id, seccion, contenido in chunks:
 
 print(f"Chunks pendientes: {len(pendientes)}")
 
-# 6. Generar embeddings solo cuando hace falta
 if pendientes:
 
     cliente = genai.Client(
@@ -97,7 +91,6 @@ if pendientes:
     if len(respuesta.embeddings) != len(pendientes):
         raise RuntimeError("Cantidad inesperada de embeddings")
 
-    # 7. Guardar los vectores
     with conexion:
         for item, embedding in zip(
             pendientes, respuesta.embeddings
@@ -126,7 +119,6 @@ if pendientes:
                 huella, json.dumps(vector)
             ))
 
-# 8. Comprobar los resultados
 total = conexion.execute(
     "SELECT COUNT(*) FROM embeddings"
 ).fetchone()[0]

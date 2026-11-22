@@ -3,14 +3,12 @@ import os
 
 from google.genai import types
 
-# Reutilizamos las funciones que ya desarrollamos
 from buscador import (
     cargar_documentos,
     buscar,
     cliente
 )
 
-# 1. Configuración del RAG
 MODELO_CHAT = os.getenv(
     "GEMINI_CHAT_MODEL",
     "gemini-3.5-flash-lite"
@@ -23,14 +21,12 @@ MENSAJE_SIN_EVIDENCIA = (
     "en las políticas disponibles."
 )
 
-# 2. Cargar los documentos indexados
 documentos = cargar_documentos()
 
 if not documentos:
     raise RuntimeError("No hay documentos disponibles")
 
 
-# 3. Construir el contexto para Gemini
 def construir_contexto(resultados):
 
     fragmentos = []
@@ -54,26 +50,20 @@ def construir_contexto(resultados):
     return "\n\n---\n\n".join(fragmentos)
 
 
-# 4. Recuperar evidencia y generar respuesta
 def responder(pregunta):
-
-    # Buscar los fragmentos más relacionados
     resultados = buscar(pregunta, documentos)
 
-    # Aplicar nuestro filtro experimental
     relevantes = [
         (puntuacion, documento)
         for puntuacion, documento in resultados
         if puntuacion >= MIN_SIMILITUD
     ]
 
-    # No consultar Gemini sin candidatos relevantes
     if not relevantes:
         return MENSAJE_SIN_EVIDENCIA, []
 
     contexto = construir_contexto(relevantes)
 
-    # Enviar la pregunta y la evidencia a Gemini
     respuesta = cliente.models.generate_content(
         model=MODELO_CHAT,
         contents=(
@@ -104,7 +94,6 @@ def responder(pregunta):
     return texto, relevantes
 
 
-# 5. Ejecutar el chatbot corporativo
 def main():
 
     print("RAG CORPORATIVO - POLÍTICA DE PRESUPUESTOS")

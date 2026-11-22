@@ -3,21 +3,17 @@ from pathlib import Path
 import sqlite3
 import json
 
-# 1. Ubicar nuestros archivos
 carpeta = Path(__file__).resolve().parent
 
 archivo_json = carpeta / "chunks.json"
 archivo_db = carpeta / "rag.db"
 
-# 2. Leer los chunks generados previamente
 chunks = json.loads(
     archivo_json.read_text(encoding="utf-8")
 )
 
-# 3. Conectar con SQLite
 conexion = sqlite3.connect(archivo_db)
 
-# 4. Crear la tabla si todavía no existe
 conexion.execute("""
     CREATE TABLE IF NOT EXISTS chunks (
         documento_id TEXT NOT NULL,
@@ -32,7 +28,6 @@ conexion.execute("""
     )
 """)
 
-# 5. Insertar los chunks
 for chunk in chunks:
     conexion.execute("""
         INSERT INTO chunks (
@@ -64,10 +59,8 @@ for chunk in chunks:
         chunk["contenido"]
     ))
 
-# 6. Guardar los cambios
 conexion.commit()
 
-# 7. Consultar los registros almacenados
 resultados = conexion.execute("""
     SELECT documento_id, version, chunk_id, seccion
     FROM chunks
