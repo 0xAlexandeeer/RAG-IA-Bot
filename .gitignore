@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 *.db
+# Documentos corporativos
+/rag_corporativo/documentos/finanzas
