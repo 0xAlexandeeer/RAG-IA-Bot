@@ -21,7 +21,7 @@ conexion.execute("PRAGMA foreign_keys = ON")
 
 conexion.execute("""
     CREATE TABLE IF NOT EXISTS embeddings (
-        documento_id TEXT NOT NULL,
+        documento_id TEXcT NOT NULL,
         version TEXT NOT NULL,
         chunk_id INTEGER NOT NULL,
         modelo TEXT NOT NULL,

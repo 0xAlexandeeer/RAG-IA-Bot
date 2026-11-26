@@ -1,0 +1,25 @@
+
+[
+  {
+    "documento_id": "POL-PRES-001",
+    "ruta": "finanzas/politica_presupuestos.txt",
+    "version": "1.0",
+    "estado": "vigente",
+    "area": "Finanzas",
+    "vigente_desde": "2026-01-01"
+  },
+  {
+    "documento_id": "PROC-MARG-001",
+    "ruta": "finanzas/procedimiento_margenes.txt",
+    "version": "1.0",
+    "estado": "vigente",
+    "area": "Finanzas"
+  },
+  {
+    "documento_id": "GLOS-FIN-001",
+    "ruta": "finanzas/glosario_financiero.txt",
+    "version": "1.0",
+    "estado": "vigente",
+    "area": "Finanzas"
+  }
+]

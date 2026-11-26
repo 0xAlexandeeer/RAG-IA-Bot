@@ -1,0 +1,34 @@
+
+GLOSARIO FINANCIERO
+Empresa Alpha - Documento ficticio
+Código: GLOS-FIN-001
+
+1. INGRESOS NETOS
+Son los ingresos por ventas después de
+descuentos, devoluciones y ajustes comerciales.
+
+2. COSTO DE VENTAS
+Representa los costos directamente asociados
+con los bienes o servicios vendidos.
+
+3. UTILIDAD BRUTA
+Es la diferencia entre los ingresos netos
+y el costo de ventas.
+
+4. MARGEN BRUTO
+Es la utilidad bruta expresada como porcentaje
+de los ingresos netos.
+
+Fórmula:
+Margen bruto = Utilidad bruta / Ingresos netos * 100
+
+5. EBITDA
+Es una medida de resultados antes de intereses,
+impuestos, depreciación y amortización.
+Su cálculo depende de los criterios de ajuste
+y presentación establecidos por la empresa.
+
+6. CENTRO DE COSTO
+Es una unidad de clasificación utilizada
+para identificar y controlar gastos y costos
+asociados a una responsabilidad organizativa.

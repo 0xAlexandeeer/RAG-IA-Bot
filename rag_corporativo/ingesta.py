@@ -5,7 +5,7 @@ import json
 
 carpeta = Path(__file__).resolve().parent
 
-archivo = carpeta / "documentos" / "politica_presupuestos.txt"
+archivo = carpeta / "documentos" / "finanzas" / "politica_presupuestos.txt"
 catalogo = carpeta / "catalogo.json"
 
 texto = archivo.read_text(encoding="utf-8").strip()

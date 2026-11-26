@@ -5,7 +5,7 @@ import json
 
 carpeta = Path(__file__).resolve().parent
 
-archivo_json = carpeta / "chunks.json"
+archivo_json = carpeta / "chunks_multi.json"
 archivo_db = carpeta / "rag.db"
 
 chunks = json.loads(
